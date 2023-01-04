@@ -1,7 +1,7 @@
 <?php
 require_once 'lib/jwt/jwt_utils.php';
 
-function create_jwt($payload, $exp)
+function create_jwt($payload)
 {
     $headers = array('alg' => 'HS256', 'typ' => 'JWT');
     // $payload =  array('username' => $username, 'password' => $password, 'exp' => (time() + 60 * 60 * 24 * $exp));
@@ -9,8 +9,9 @@ function create_jwt($payload, $exp)
 
     return $jwt;
 }
-$payload = array('email' => "boychawin.com@gmail.com",'username' => "boychawin", 'password' => "123456",'exp' => (time() + 60 * 60 * 24 * $exp));
-$bearer_token = create_jwt($payload, 30);
+
+$payload = array('email' => "boychawin.com@gmail.com",'username' => "boychawin", 'password' => "123456",'exp' => (time() + 60 * 60 * 24 * 30));
+$bearer_token = create_jwt($payload);
 // print_r("jwt ==> ".$bearer_token);
 echo "\n";
 // $bearer_token = get_bearer_token();
